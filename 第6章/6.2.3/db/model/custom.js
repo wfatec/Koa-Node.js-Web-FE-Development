@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('custom', 'username', 'password', {
+const sequelize = new Sequelize('koa-test', 'root', 'xue99817749', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
@@ -56,6 +56,10 @@ const Customer = sequelize.define('customer', {
     type: Sequelize.STRING
   }
 })
+
+sequelize.sync()
+  .then(() => console.log('All models have been synced!'))
+  .catch(() => console.log('Something error happened!'))
 
 // Customer.sync({ force: true });
 
